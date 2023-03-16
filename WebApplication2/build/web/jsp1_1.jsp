@@ -58,7 +58,10 @@
        
   <div class="carousel-indicators">
        <%
-            String num=request.getParameter("num");
+            int suma = 0, rest = 0, multi = 0, may = 0, men =0;
+            float prom = 0;
+            String num =request.getParameter("num");
+            int cuan = Integer.parseInt(num);
             for (int i = 0; i < Integer.parseInt(num); i++) {
                     
                 
@@ -69,6 +72,7 @@
     
             <div class="carousel-item active" data-bs-interval="10000">
         <%
+
             int y = (int)(Math.random()*100);
             if(y <50)
             {
@@ -84,25 +88,73 @@
              }
          %>
         <h2 class= "text-center">El numero <%= i+1%> es: <%= y%></h2>   
-        <br><br><br><br><br><br><br><br><br><br>
+        <%
+            suma = suma + y;
+            rest = rest-y;
+            multi = multi * y;
+            
+            
+            may = y;
+            if (may < y) {
+                    may = y;
+            }
+            else 
+               men = y;
+            
+        %>
+        <br><br><br><br><br><br><br><br>
         <div class="carousel-caption d-none d-md-block">
 
       </div>
     </div>
          <%
              }
+            prom = suma/cuan;
          %>
-    
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        </div>
+         
+      <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <h1 class= "text-center">La suma de los numeros es: <%= suma%></h1>   
+    </div>
+    <div class="carousel-item">
+        <h1 class= "text-center">La resta de los numeros es: <%= rest%></h1>   
+    </div>
+    <div class="carousel-item">
+        <h1 class= "text-center">La multi de los numeros es: <%= multi%></h1>   
+    </div>
+    <div class="carousel-item">
+        <h1 class= "text-center">El promedio de los numeros es: <%= prom%></h1>   
+    </div>
+    <div class="carousel-item">
+        <h1 class= "text-center">El numero mayor de los numeros es: <%= may%></h1>   
+        <h1 class= "text-center">El numero menor de los numeros es: <%= men%></h1>   
+
+    </div>
+        
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+               
 </div>
+     <br><br><br><br><br><br><br><br>
+
 
 
          
